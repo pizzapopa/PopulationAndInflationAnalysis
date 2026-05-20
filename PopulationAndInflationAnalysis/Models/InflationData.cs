@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace PopulationAndInflationAnalysis.Models
 {
-    internal class InflationData
+    public class InflationData
     {
+        public int Year { get; set; }
+        public double InflationRate { get; set; }
     }
 }
