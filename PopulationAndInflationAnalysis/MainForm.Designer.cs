@@ -28,7 +28,7 @@
             this.chartData = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnCalculate = new System.Windows.Forms.Button();
             this.btnExportChart = new System.Windows.Forms.Button();
-            this.lblResult = new System.Windows.Forms.Label();
+            this.richTextBoxResult = new System.Windows.Forms.RichTextBox();
 
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartData)).BeginInit();
@@ -87,7 +87,7 @@
             this.dataGridViewData.ReadOnly = true;
             this.dataGridViewData.RowHeadersWidth = 51;
             this.dataGridViewData.RowTemplate.Height = 24;
-            this.dataGridViewData.Size = new System.Drawing.Size(860, 200);
+            this.dataGridViewData.Size = new System.Drawing.Size(860, 180);
             this.dataGridViewData.TabIndex = 5;
 
             // chartData
@@ -98,19 +98,19 @@
             this.chartData.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartData.Legends.Add(legend1);
-            this.chartData.Location = new System.Drawing.Point(12, 290);
+            this.chartData.Location = new System.Drawing.Point(12, 270);
             this.chartData.Name = "chartData";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartData.Series.Add(series1);
-            this.chartData.Size = new System.Drawing.Size(860, 300);
+            this.chartData.Size = new System.Drawing.Size(860, 280);
             this.chartData.TabIndex = 6;
             this.chartData.Text = "chartData";
 
             // btnCalculate
             this.btnCalculate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCalculate.Location = new System.Drawing.Point(12, 610);
+            this.btnCalculate.Location = new System.Drawing.Point(12, 560);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(150, 30);
             this.btnCalculate.TabIndex = 7;
@@ -119,26 +119,30 @@
 
             // btnExportChart
             this.btnExportChart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExportChart.Location = new System.Drawing.Point(170, 610);
+            this.btnExportChart.Location = new System.Drawing.Point(170, 560);
             this.btnExportChart.Name = "btnExportChart";
             this.btnExportChart.Size = new System.Drawing.Size(150, 30);
             this.btnExportChart.TabIndex = 8;
             this.btnExportChart.Text = "Сохранить график";
             this.btnExportChart.UseVisualStyleBackColor = true;
 
-            // lblResult
-            this.lblResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(12, 655);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(0, 16);
-            this.lblResult.TabIndex = 9;
+            // richTextBoxResult
+            this.richTextBoxResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBoxResult.BackColor = System.Drawing.Color.LightYellow;
+            this.richTextBoxResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.richTextBoxResult.Location = new System.Drawing.Point(12, 600);
+            this.richTextBoxResult.Name = "richTextBoxResult";
+            this.richTextBoxResult.ReadOnly = true;
+            this.richTextBoxResult.Size = new System.Drawing.Size(860, 100);
+            this.richTextBoxResult.TabIndex = 10;
+            this.richTextBoxResult.Text = "";
 
             // MainForm
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 681);
-            this.Controls.Add(this.lblResult);
+            this.ClientSize = new System.Drawing.Size(884, 720);
+            this.Controls.Add(this.richTextBoxResult);
             this.Controls.Add(this.btnExportChart);
             this.Controls.Add(this.btnCalculate);
             this.Controls.Add(this.chartData);
@@ -148,7 +152,7 @@
             this.Controls.Add(this.btnLoadFile);
             this.Controls.Add(this.rbtnInflation);
             this.Controls.Add(this.rbtnPopulation);
-            this.MinimumSize = new System.Drawing.Size(700, 600);
+            this.MinimumSize = new System.Drawing.Size(700, 650);
             this.Name = "MainForm";
             this.Text = "Анализ населения и инфляции России";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewData)).EndInit();
@@ -166,6 +170,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartData;
         private System.Windows.Forms.Button btnCalculate;
         private System.Windows.Forms.Button btnExportChart;
-        private System.Windows.Forms.Label lblResult;
+        private System.Windows.Forms.RichTextBox richTextBoxResult;
     }
 }
