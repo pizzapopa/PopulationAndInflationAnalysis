@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace PopulationAndInflationAnalysis.Models
 {
-    internal class PopulationData
+    public class PopulationData
     {
+        public int Year { get; set; }
+        public string Region { get; set; }
+        public double Population { get; set; }
     }
 }
