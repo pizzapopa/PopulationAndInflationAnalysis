@@ -10,8 +10,17 @@ using Newtonsoft.Json;
 
 namespace PopulationAndInflationAnalysis.Services
 {
+    /// <summary>
+    /// Сервис для загрузки данных из JSON-файлов
+    /// </summary>
     public class DataLoader
     {
+        /// <summary>
+        /// Загружает данные о численности населения из JSON-файла
+        /// </summary>
+        /// <param name="filePath">Путь к JSON-файлу</param>
+        /// <returns>Список объектов PopulationData</returns>
+        /// <exception cref="FileNotFoundException">Выбрасывается, если файл не найден</exception>
         public List<PopulationData> LoadPopulationData(string filePath)
         {
             if (!File.Exists(filePath))
@@ -23,6 +32,10 @@ namespace PopulationAndInflationAnalysis.Services
             return data ?? new List<PopulationData>();
         }
 
+        /// <summary>
+        /// Создаёт пример JSON-файла с демонстрационными данными о населении
+        /// </summary>
+        /// <param name="filePath">Путь для сохранения файла</param>
         public void CreateSamplePopulationFile(string filePath)
         {
             var sampleData = new List<PopulationData>
@@ -36,7 +49,12 @@ namespace PopulationAndInflationAnalysis.Services
             File.WriteAllText(filePath, json);
         }
 
-        //10 вариант (инфляция)
+        /// <summary>
+        /// Загружает данные об инфляции из JSON-файла (основной метод 10 варианта)
+        /// </summary>
+        /// <param name="filePath">Путь к JSON-файлу с данными об инфляции</param>
+        /// <returns>Список объектов InflationData</returns>
+        /// <exception cref="FileNotFoundException">Выбрасывается, если файл не найден</exception>
         public List<InflationData> LoadInflationData(string filePath)
         {
             if (!File.Exists(filePath))
