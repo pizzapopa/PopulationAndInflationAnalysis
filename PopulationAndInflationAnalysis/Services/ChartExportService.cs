@@ -4,9 +4,16 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace PopulationAndInflationAnalysis.Services
 {
-    // Класс для сохранения графика в файл
+    /// <summary>
+    /// Сервис для экспорта графиков в изображения
+    /// </summary>
     public class ChartExportService
     {
+        /// <summary>
+        /// Сохраняет график в PNG-файл
+        /// </summary>
+        /// <param name="chart">Элемент Chart для сохранения</param>
+        /// <param name="filePath">Путь к файлу для сохранения</param>
         public void ExportToImage(Chart chart, string filePath)
         {
             try
