@@ -4,13 +4,20 @@ using System.Linq;
 
 namespace PopulationAndInflationAnalysis.Services
 {
-    // Класс для расчёта скользящей средней (метод экстраполяции)
+    /// <summary>
+    /// Класс для расчёта скользящей средней (метод экстраполяции)
+    /// Используется для прогнозирования временных рядов
+    /// </summary>
     public class MovingAverageCalculator
     {
-        // Рассчитывает прогноз на N периодов вперёд
-        // values: список исходных значений
-        // n: период скользящей средней
-        // forecastSteps: сколько шагов вперёд прогнозировать
+        /// <summary>
+        /// Рассчитывает прогноз на N периодов вперёд методом скользящей средней
+        /// </summary>
+        /// <param name="values">Исходный ряд данных (список чисел)</param>
+        /// <param name="n">Период скользящей средней (сколько последних значений усреднять)</param>
+        /// <param name="forecastSteps">Сколько шагов вперёд нужно спрогнозировать</param>
+        /// <returns>Список прогнозных значений</returns>
+        /// <exception cref="ArgumentException">Выбрасывается, если недостаточно данных</exception>
         public List<double> CalculateForecast(List<double> values, int n, int forecastSteps)
         {
             if (values == null || values.Count < n)
@@ -23,17 +30,23 @@ namespace PopulationAndInflationAnalysis.Services
             {
                 // Берём последние n значений
                 var lastN = currentValues.Skip(currentValues.Count - n).Take(n).ToList();
-                // Считаем среднее
+                // Считаем среднее арифметическое
                 double average = lastN.Average();
                 forecast.Add(average);
-                // Добавляем прогнозное значение для следующего шага
+                // Добавляем прогнозное значение для следующего шага (чтобы использовать в расчёте)
                 currentValues.Add(average);
             }
 
             return forecast;
         }
 
-        // Рассчитывает скользящую среднюю для всего ряда (для отображения сглаженного графика)
+        /// <summary>
+        /// Рассчитывает скользящую среднюю для всего ряда данных
+        /// Используется для отображения сглаженного графика
+        /// </summary>
+        /// <param name="values">Исходный ряд данных</param>
+        /// <param name="n">Период скользящей средней</param>
+        /// <returns>Список значений скользящей средней (первые n-1 элементов равны 0)</returns>
         public List<double> CalculateMovingAverage(List<double> values, int n)
         {
             var result = new List<double>();
@@ -54,6 +67,29 @@ namespace PopulationAndInflationAnalysis.Services
                 }
             }
             return result;
+        }
+
+        /// <summary>
+        /// Рассчитывает стоимость товара через N лет с учётом инфляции
+        /// Используется для 10 варианта (инфляция)
+        /// </summary>
+        /// <param name="price">Текущая цена товара</param>
+        /// <param name="inflationRates">Исторические данные об инфляции по годам</param>
+        /// <param name="years">Количество лет прогноза</param>
+        /// <returns>Список цен по годам (на каждый год прогноза)</returns>
+        public List<double> CalculateFuturePrices(double price, List<double> inflationRates, int years)
+        {
+            var futurePrices = new List<double>();
+            double currentPrice = price;
+
+            for (int i = 0; i < years; i++)
+            {
+                // Берём среднюю инфляцию за последние 3 года для прогноза
+                double avgInflation = inflationRates.Skip(Math.Max(0, inflationRates.Count - 3)).Average();
+                currentPrice = currentPrice * (1 + avgInflation / 100);
+                futurePrices.Add(currentPrice);
+            }
+            return futurePrices;
         }
     }
 }
