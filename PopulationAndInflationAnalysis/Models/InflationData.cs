@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PopulationAndInflationAnalysis.Models
+﻿namespace PopulationAndInflationAnalysis.Models
 {
-    internal class InflationData
+    /// <summary>
+    /// Класс, представляющий данные об инфляции в России за год
+    /// </summary>
+    public class InflationData
     {
+        /// <summary>
+        /// Год, за который указана инфляция
+        /// </summary>
+        public int Year { get; set; }
+
+        /// <summary>
+        /// Уровень инфляции в процентах
+        /// </summary>
+        public double InflationRate { get; set; }
     }
 }
