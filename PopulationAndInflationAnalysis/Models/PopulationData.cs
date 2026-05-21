@@ -2,13 +2,29 @@
 
 namespace PopulationAndInflationAnalysis.Models
 {
-    // Модель данных о населении по субъекту РФ
+    /// <summary>
+    /// Класс, представляющий данные о численности населения по субъекту РФ за год
+    /// </summary>
     public class PopulationData
     {
-        public int Year { get; set; }           // Год
-        public string Region { get; set; }      // Название субъекта
-        public double Population { get; set; }  // Численность населения (млн или тыс)
+        /// <summary>
+        /// Год, за который указаны данные
+        /// </summary>
+        public int Year { get; set; }
 
+        /// <summary>
+        /// Название субъекта РФ (региона)
+        /// </summary>
+        public string Region { get; set; }
+
+        /// <summary>
+        /// Численность населения (в миллионах человек)
+        /// </summary>
+        public double Population { get; set; }
+
+        /// <summary>
+        /// Строковое представление объекта для отладки
+        /// </summary>
         public override string ToString()
         {
             return $"{Year} - {Region}: {Population}";
